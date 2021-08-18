@@ -6,7 +6,7 @@ namespace CardGameSchool
     {
         static void Main(string[] args)
         {
-            
+            Console.WriteLine("Just testing git, card game will come later...");
         }
     }
 }
