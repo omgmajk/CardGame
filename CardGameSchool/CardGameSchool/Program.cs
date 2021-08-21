@@ -26,7 +26,7 @@ namespace CardGameSchool
     public class Player
     {
         private string name;
-        private Queue<Card> hand;
+        private Queue<Card> hand = new Queue<Card>();
 
         public Player(string name)
         {
@@ -51,7 +51,8 @@ namespace CardGameSchool
             aceofspades.Suit = Suit.Spades;
             aceofspades.Value = 14;
             mike.Hand.Enqueue(aceofspades);
-            Console.WriteLine(mike.Hand.Peek().ToString());
+            var test = mike.Hand.Peek();
+            Console.WriteLine(test.Value);
         }
     }
 }
