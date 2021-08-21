@@ -4,32 +4,54 @@ using System.Collections.Generic;
 namespace CardGameSchool
 {
 
-    public enum Cards
+    public enum Suit
     {
-        Two = 2,
-        Three = 3,
-        Four = 4,
-        Five = 5,
-        Six = 6,
-        Seven = 7,
-        Eight = 8,
-        Nine = 9,
-        Ten = 10,
-        Jack = 11,
-        Queen = 12,
-        King = 13,
-        Ace = 14
+        Diamonds,
+        Clubs,
+        Spades,
+        Hearts
+    }
+    
+    public class Card
+    {
+        private string name;
+        private Suit suit;
+        private int value;
+
+        public string Name { get => name; set => name = value; }
+        public Suit Suit { get => suit; set => suit = value; }
+        public int Value { get => value; set => this.value = value; }
+    }
+
+    public class Player
+    {
+        private string name;
+        private Queue<Card> hand;
+
+        public Player(string name)
+        {
+            Name = name;
+        }
+        public Player()
+        {
+            Name = "John Doe";
+        }
+
+        public Queue<Card> Hand { get => hand; set => hand = value; }
+        public string Name { get => name; set => name = value; }
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            Queue<Enum> deck = new Queue<Enum>();
-            deck.Enqueue(Cards.Ace);
-            deck.Enqueue(Cards.Two);
-            deck.Enqueue(Cards.Three);
-            var currentCard = deck.Dequeue();
+            Player mike = new Player("Mike");
+            Card aceofspades = new Card();
+            aceofspades.Name = "Ace of Spades";
+            aceofspades.Suit = Suit.Spades;
+            aceofspades.Value = 14;
+            mike.Hand.Enqueue(aceofspades);
+            Console.WriteLine(mike.Hand.Peek().ToString());
         }
     }
 }
