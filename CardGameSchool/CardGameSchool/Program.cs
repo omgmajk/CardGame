@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CardGameSchool
 {
-
+    // Quick enum to make a difference between suits for deck building.
     public enum Suit
     {
         Diamonds,
@@ -26,7 +26,7 @@ namespace CardGameSchool
     public class Player
     {
         private string name;
-        private Queue<Card> hand = new Queue<Card>();
+        private Queue<Card> deck = new Queue<Card>();
 
         public Player(string name)
         {
@@ -37,8 +37,8 @@ namespace CardGameSchool
             Name = "John Doe";
         }
 
-        public Queue<Card> Hand { get => hand; set => hand = value; }
         public string Name { get => name; set => name = value; }
+        public Queue<Card> Deck { get => deck; set => deck = value; }
     }
 
     class Program
@@ -50,9 +50,14 @@ namespace CardGameSchool
             aceofspades.Name = "Ace of Spades";
             aceofspades.Suit = Suit.Spades;
             aceofspades.Value = 14;
-            mike.Hand.Enqueue(aceofspades);
-            var test = mike.Hand.Peek();
+            
+            // Actually works! Three cards in the deck.
+            mike.Deck.Enqueue(aceofspades);
+            mike.Deck.Enqueue(aceofspades);
+            mike.Deck.Enqueue(aceofspades);
+            var test = mike.Deck.Peek();
             Console.WriteLine(test.Value);
+            Console.WriteLine(mike.Deck.Count);
         }
     }
 }
