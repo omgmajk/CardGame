@@ -32,10 +32,19 @@ namespace CardGameSchool
             string mode = Console.ReadLine();
 
             if (!String.IsNullOrEmpty(mode))
-                if (mode[0].ToString().ToLower() == "y") Game.Automatic = true;
+                if (mode[0].ToString().ToLower() == "y") Game.Automatic = false;
 
-            var gameMode = Game.Automatic ? "Good!" : "I warned you!";
+            // Second warning...
+            var gameMode = Game.Automatic ? "Good!" : "I warned you!" + " Press enter to begin.";
             Console.WriteLine(gameMode);
+            Console.ReadLine();
+
+            if(Game.Automatic == false)
+            {
+                Console.Clear();
+                Console.WriteLine("All you can do is press enter, the game has no player logic. Press enter to begin.");
+                Console.ReadLine();
+            }
 
             // Game loop.
             int turns = 0;
@@ -58,6 +67,7 @@ namespace CardGameSchool
                     if (Game.Automatic == true)
                         Thread.Sleep(100);
                     else
+                        Console.WriteLine("\n\n\nPress enter to flip next card...");
                         Console.ReadLine();
                 }
 

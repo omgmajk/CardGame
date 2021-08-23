@@ -8,7 +8,7 @@ namespace CardGameSchool
     public class Game
     {
         // Game rules
-        private static bool automatic = false;
+        private static bool automatic = true;
 
         public static bool Automatic { get => automatic; set => automatic = value; }
 
