@@ -35,7 +35,7 @@ namespace CardGameSchool
                 if (mode[0].ToString().ToLower() == "y") Game.Automatic = false;
 
             // Second warning...
-            var gameMode = Game.Automatic ? "Good!" : "I warned you!" + " Press enter to begin.";
+            var gameMode = Game.Automatic ? "Good! The game will sleep for 0.1s each turn." : "I warned you!" + " Press enter to begin.";
             Console.WriteLine(gameMode);
             Console.ReadLine();
 
@@ -67,8 +67,10 @@ namespace CardGameSchool
                     if (Game.Automatic == true)
                         Thread.Sleep(100);
                     else
+                    {
                         Console.WriteLine("\n\n\nPress enter to flip next card...");
                         Console.ReadLine();
+                    }
                 }
 
                 Console.WriteLine(Game.Winner(playerOne, playerTwo));

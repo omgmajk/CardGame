@@ -71,10 +71,12 @@ namespace CardGameSchool
         public static void Battle(Player one, Player two)
         {
             Card[] cards = new Card[2];
-            Console.WriteLine($"{one.Name}\t\t\tVS.\t\t{two.Name}");
+            //Console.WriteLine($"{one.Name}\t\t\tVS.\t\t{two.Name}");
             Console.WriteLine("+--------------------------------------------+");
-            Console.WriteLine($"{one.Deck.Peek().Name}({one.Deck.Peek().ShortName})\t\tVS.\t\t{two.Deck.Peek().Name}({two.Deck.Peek().ShortName})");
+            Console.WriteLine($"{one.Name}:\n{one.Deck.Peek().Name}({one.Deck.Peek().ShortName})\n\tVS.\n" +
+            $"{two.Name}:\n{two.Deck.Peek().Name}({two.Deck.Peek().ShortName})");
 
+            // Put back the two cards at the bottom of winner's deck.
             if(one.Deck.Peek().Value > two.Deck.Peek().Value)
             {
                 Console.WriteLine("+--------------------------------------------+");
@@ -93,6 +95,9 @@ namespace CardGameSchool
             }
             else
             {
+                Console.WriteLine($"\n\n{one.Deck.Peek().Name}({one.Deck.Peek().ShortName})" +
+                                  $" and {two.Deck.Peek().Name} ({two.Deck.Peek().ShortName}) are equal!");
+                Console.WriteLine("Prepare for war...\n\n");
                 War(one, two);
             }
         }
@@ -100,10 +105,11 @@ namespace CardGameSchool
         // War method, main game.
         public static void War(Player one, Player two)
         {
+            
             Console.WriteLine("+--------------------------------------------+");
             Console.WriteLine("One, two, three, four... I declare a card war!");
 
-            // Check if any player has too few cards...
+            // Check if any player has too few cards... Player who has less than 4 cards loses.
             if(one.Deck.Count < 4)
             {
                 Console.WriteLine($"{one.Name} has too few cards!");
