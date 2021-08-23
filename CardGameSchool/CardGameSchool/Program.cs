@@ -9,18 +9,19 @@ namespace CardGameSchool
     {
         static void Main(string[] args)
         {
-            // Save these "♠♥♦♣"
-            //             Queue<Card> cardsPlayerTwo = new Queue<Card>();
-            //             Queue<Card> cardsPlayerOne = new Queue<Card>();
+            // Uncomment later
+            //Console.WriteLine("What is the name of player one?");
+            //string first = Console.ReadLine();
+            //Console.WriteLine("What is the name of player two?");
+            //string second = Console.ReadLine();
 
-            Console.WriteLine("What is the name of player one?");
-            string first = Console.ReadLine();
-            Console.WriteLine("What is the name of player two?");
-            string second = Console.ReadLine();
+            // Testing things
+            string first = "Mike", second = "Thomas";
 
             Player playerOne = new Player(first);
             Player playerTwo = new Player(second);
 
+            // Make the hands.
             var deck = Game.FillDeck();
             for (int i = deck.Count; i > 0; i--)
             {
