@@ -27,7 +27,7 @@ namespace CardGameSchool
 
             // Set game modes
             Console.WriteLine("WARNING: Game is extremely dull. ");
-            Console.WriteLine("Do you want to play manually? (y/yes/n/no) Auto(Empty/No).");
+            Console.WriteLine("Do you want to play manually? (y/yes/n/no). Auto(Empty/No).");
             string mode = Console.ReadLine();
 
             if (!String.IsNullOrEmpty(mode))
@@ -35,6 +35,23 @@ namespace CardGameSchool
 
             // Make the hands.
             Game.GenerateHands(playerOne, playerTwo);
+
+            // Game loop.
+            do
+            {
+                while (playerOne.Deck.Count > 0 || playerTwo.Deck.Count > 0)
+                {
+                    break;
+                }
+                Console.WriteLine("Do you want to play again? (y/yes/n/no). Auto(Empty/No).");
+                string playAgain = Console.ReadLine();
+                if (!String.IsNullOrEmpty(playAgain))
+                    if (playAgain[0].ToString().ToLower() == "y") continue;
+                
+                // Will never run if yes is entered.
+                break;
+
+            } while (true);
 
         }
     }
