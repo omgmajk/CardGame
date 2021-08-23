@@ -9,6 +9,8 @@ namespace CardGameSchool
     {
         static void Main(string[] args)
         {
+            // Save these "♠♥♦♣"
+
             Player mike = new Player("Mike");
             Card aceofspades = new Card();
             aceofspades.Name = "Ace of Spades";
