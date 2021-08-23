@@ -11,6 +11,15 @@ namespace TestCardGameSchool
         {
             Assert.AreEqual(52, Game.FillDeck().Count);
         }
+        [TestMethod]
+        public void TestHands()
+        {
+            Player one = new Player();
+            Player two = new Player();
+            Game.GenerateHands(one, two);
+            Assert.AreEqual(26, one.Deck.Count);
+            Assert.AreEqual(26, two.Deck.Count);
+        }
     }
     [TestClass]
     public class TestCardNames
