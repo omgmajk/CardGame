@@ -14,6 +14,8 @@ namespace CardGameSchool
             string first = Console.ReadLine();
             Console.WriteLine("What is the name of player two? Enter for random name.");
             string second = Console.ReadLine();
+            
+            // Names set to random until changed.
             Player playerOne = new Player();
             Player playerTwo = new Player();
 
