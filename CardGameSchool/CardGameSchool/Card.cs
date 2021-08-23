@@ -14,7 +14,7 @@ namespace CardGameSchool
         public int Value { get => _value; set => this._value = value; }
         public string ShortName { get => _shortName; set => _shortName = value; }
 
-        public static string GetName(int val)
+        public static string GetString(int val)
         {
             switch (val)
             {
@@ -35,7 +35,7 @@ namespace CardGameSchool
 
         public static string GetLongName(Card card){
             if (card.Value > 10)
-                return $"{GetName(card.Value)} of {card.Suit}";
+                return $"{GetString(card.Value)} of {card.Suit}";
             else
                 return $"{card.Value} of {card.Suit}";
         }
