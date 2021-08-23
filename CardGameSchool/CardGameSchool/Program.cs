@@ -1,44 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace CardGameSchool
 {
-    // Quick enum to make a difference between suits for deck building.
-    public enum Suit
-    {
-        Diamonds,
-        Clubs,
-        Spades,
-        Hearts
-    }
+    // Quick enum to make a difference between suits for deck building. Not needed in the game I ended up with.
+    public enum Suit { Diamonds, Clubs, Spades, Hearts }
     
     public class Card
     {
-        private string name;
-        private Suit suit;
-        private int value;
+        private string _name;
+        private Suit _suit;
+        private int _value;
 
-        public string Name { get => name; set => name = value; }
-        public Suit Suit { get => suit; set => suit = value; }
-        public int Value { get => value; set => this.value = value; }
-    }
-
-    public class Player
-    {
-        private string name;
-        private Queue<Card> deck = new Queue<Card>();
-
-        public Player(string name)
-        {
-            Name = name;
-        }
-        public Player()
-        {
-            Name = "John Doe";
-        }
-
-        public string Name { get => name; set => name = value; }
-        public Queue<Card> Deck { get => deck; set => deck = value; }
+        public string Name { get => _name; set => _name = value; }
+        public Suit Suit { get => _suit; set => _suit = value; }
+        public int Value { get => _value; set => this._value = value; }
     }
 
     class Program
