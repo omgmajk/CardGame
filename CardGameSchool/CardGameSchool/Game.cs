@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace CardGameSchool
 {
@@ -70,7 +71,7 @@ namespace CardGameSchool
         public static void Battle(Player one, Player two)
         {
             Card[] cards = new Card[2];
-            Console.WriteLine($"{one.Name}\t\tVS.\t\t{two.Name}");
+            Console.WriteLine($"{one.Name}\t\t\tVS.\t\t{two.Name}");
             Console.WriteLine("+--------------------------------------------+");
             Console.WriteLine($"{one.Deck.Peek().Name}({one.Deck.Peek().ShortName})\t\tVS.\t\t{two.Deck.Peek().Name}({two.Deck.Peek().ShortName})");
 
@@ -99,6 +100,7 @@ namespace CardGameSchool
         // War method, main game.
         public static void War(Player one, Player two)
         {
+            Console.WriteLine("+--------------------------------------------+");
             Console.WriteLine("One, two, three, four... I declare a card war!");
 
             // Check if any player has too few cards...
@@ -115,9 +117,9 @@ namespace CardGameSchool
                 return;
             }
             // If both players has enough cards. Go go go! War!
-            
+
             Card[] cards = new Card[8];
-            Console.WriteLine($"{one.Name}\t\tVS.\t\t{two.Name}");
+            //Console.WriteLine($"{one.Name}\t\tVS.\t\t{two.Name}");
             Console.WriteLine("+--------------------------------------------+");
             cards[0] = one.Deck.Dequeue();
             cards[1] = one.Deck.Dequeue();
@@ -131,24 +133,30 @@ namespace CardGameSchool
             // Player's last cards vs eachother.
             for (int i = cards.Length; i > 0 ; i-=2)
             {
+                
+                Console.WriteLine($"{cards[i-5].Name}({cards[i-5].ShortName})\t\tVS.\t\t{cards[i-1].Name}({cards[i-1].ShortName})");
+                Thread.Sleep(4000);
                 if (cards[i - 1].Value < cards[i - 5].Value)
                 {
                     Console.WriteLine($"{one.Name} wins the war!");
+                    Thread.Sleep(500);
                     Putbacks(cards.ToList(), one);
                     break;
                 }
                 else if (cards[i - 1].Value > cards[i - 5].Value)
                 {
                     Console.WriteLine($"{two.Name} wins the war!");
+                    Thread.Sleep(500);
                     Putbacks(cards.ToList(), two);
                     break;
                 }
                 else 
                 {
                     Console.WriteLine("The war is a draw!");
+                    Thread.Sleep(500);
                     continue;
                 }
-                
+                     
             }
         }
 

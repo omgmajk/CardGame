@@ -34,7 +34,9 @@ namespace CardGameSchool
             if (!String.IsNullOrEmpty(mode))
                 if (mode[0].ToString().ToLower() == "y") Game.Automatic = true;
 
-            
+            var gameMode = Game.Automatic ? "Good!" : "I warned you!";
+            Console.WriteLine(gameMode);
+
             // Game loop.
             int turns = 0;
             do
@@ -47,19 +49,30 @@ namespace CardGameSchool
                     turns++;
                     Console.Clear();
                     Game.Battle(playerOne, playerTwo);
-                    Console.WriteLine("Current count: " + playerOne.Deck.Count + " " + playerTwo.Deck.Count);
-                    Console.WriteLine($"Current total: {playerOne.Deck.Count + playerTwo.Deck.Count}");
+                    Console.WriteLine("\n\n\nCurrent deck count: \n" + 
+                    playerOne.Name + ": " + 
+                    playerOne.Deck.Count + ", " +
+                    playerTwo.Name + ": " +
+                    + playerTwo.Deck.Count);
                     Console.WriteLine($"Current turn: {turns}");
-                    Thread.Sleep(100);
+                    if (Game.Automatic == true)
+                        Thread.Sleep(100);
+                    else
+                        Console.ReadLine();
                 }
 
                 Console.WriteLine(Game.Winner(playerOne, playerTwo));
 
                 Console.WriteLine("Do you want to play again? (y/yes/n/no). Auto(Empty/No).");
                 string playAgain = Console.ReadLine();
-                
+
                 if (!String.IsNullOrEmpty(playAgain))
-                    if (playAgain[0].ToString().ToLower() == "y") continue;
+                    if (playAgain[0].ToString().ToLower() == "y")
+                    {
+                        playerOne.Deck.Clear();
+                        playerTwo.Deck.Clear();
+                        continue;
+                    }
                 
                 // Will never run if yes is entered.
                 break;
