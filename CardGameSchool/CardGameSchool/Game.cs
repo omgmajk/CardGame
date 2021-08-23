@@ -7,9 +7,9 @@ namespace CardGameSchool
     public class Game
     {
         // Game rules
-        private bool automatic = false;
+        private static bool automatic = false;
 
-        public bool Automatic { get => automatic; set => automatic = value; }
+        public static bool Automatic { get => automatic; set => automatic = value; }
 
         // Returns a shuffled list of Cards.
         public static List<Card> FillDeck()
