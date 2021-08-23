@@ -1,6 +1,8 @@
 # Welcome to war!
 
-A simple implementation of the card game War with slight adjustments... 
+A simple implementation of the card game War in C# with slight adjustments... 
+
+**Needs .NET 5.0 to compile**
 
 **Rules**
 1. Players each get 26 cards from a shuffled deck.
