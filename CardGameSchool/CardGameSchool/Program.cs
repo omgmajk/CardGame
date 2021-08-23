@@ -16,10 +16,8 @@ namespace CardGameSchool
             //string second = Console.ReadLine();
 
             // Testing things
-            string first = "Mike", second = "Thomas";
-
-            Player playerOne = new Player(first);
-            Player playerTwo = new Player(second);
+            Player playerOne = new Player();
+            Player playerTwo = new Player();
 
             // Make the hands.
             var deck = Game.FillDeck();

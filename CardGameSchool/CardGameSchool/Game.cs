@@ -4,8 +4,14 @@ using System.Linq;
 
 namespace CardGameSchool
 {
-    public static class Game
+    public class Game
     {
+        // Game rules
+        private bool automatic = false;
+
+        public bool Automatic { get => automatic; set => automatic = value; }
+
+        // Returns a shuffled list of Cards.
         public static List<Card> FillDeck()
         {
             List<Card> deck = new List<Card>();
