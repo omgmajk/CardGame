@@ -10,22 +10,31 @@ namespace CardGameSchool
         static void Main(string[] args)
         {
             // Save these "♠♥♦♣"
+            //             Queue<Card> cardsPlayerTwo = new Queue<Card>();
+            //             Queue<Card> cardsPlayerOne = new Queue<Card>();
 
-            Player mike = new Player("Mike");
-            Card aceofspades = new Card();
-            aceofspades.Name = "Ace of Spades";
-            aceofspades.Suit = Suit.Spades;
-            aceofspades.Value = 14;
-            aceofspades.ShortName = "♠A";
+            Console.WriteLine("What is the name of player one?");
+            string first = Console.ReadLine();
+            Console.WriteLine("What is the name of player two?");
+            string second = Console.ReadLine();
 
-            // Actually works! Three cards in the deck.
-            mike.Deck.Enqueue(aceofspades);
-            mike.Deck.Enqueue(aceofspades);
-            mike.Deck.Enqueue(aceofspades);
-            var test = mike.Deck.Peek();
-            Console.WriteLine(Card.GetLongName(aceofspades));
-            Console.WriteLine(test.ShortName);
-            Console.WriteLine(mike.Deck.Count);
+            Player playerOne = new Player(first);
+            Player playerTwo = new Player(second);
+
+            var deck = Game.FillDeck();
+            for (int i = deck.Count; i > 0; i--)
+            {
+                if (i % 2 == 0)
+                {
+                    playerOne.Deck.Enqueue(deck[0]);
+                    deck.RemoveAt(0);
+                }
+                else
+                {
+                    playerTwo.Deck.Enqueue(deck[0]);
+                    deck.RemoveAt(0);
+                }
+            }
         }
     }
 }
