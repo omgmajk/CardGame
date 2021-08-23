@@ -25,8 +25,9 @@ namespace CardGameSchool
             if (!String.IsNullOrEmpty(second))
                 playerTwo.Name = second;
 
-            // Set game mode
-            Console.WriteLine("Do you want to play manually? (y/yes/n/no) WARNING: Game is extremely dull...");
+            // Set game modes
+            Console.WriteLine("WARNING: Game is extremely dull. ");
+            Console.WriteLine("Do you want to play manually? (y/yes/n/no) Auto(Empty/No).");
             string mode = Console.ReadLine();
 
             if (!String.IsNullOrEmpty(mode))
