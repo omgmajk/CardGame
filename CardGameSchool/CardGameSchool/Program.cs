@@ -10,16 +10,21 @@ namespace CardGameSchool
     {
         static void Main(string[] args)
         {
+            // Game main screen and display rules.
             Console.WriteLine("Welcome to...");
             Console.WriteLine(
             @"
-           __      __  _____ __________ 
-          /  \    /  \/  _  \\______   \
-          \   \/\/   /  /_\  \|       _/
-           \        /    |    \    |   \
-            \__/\  /\____|__  /____|_  /
-                 \/         \/       \/ 
-            ");
+         __      __  _____ __________ 
+        /  \    /  \/  _  \\______   \
+        \   \/\/   /  /_\  \|       _/
+         \        /    |    \    |   \
+          \__/\  /\____|__  /____|_  /
+               \/         \/       \/ 
+        A game interpretation by Mike.
+        ");
+
+            Console.WriteLine("\n\nPress enter to continue.");
+            Console.ReadLine();
 
             // Start game
             Console.WriteLine("What is the name of player one? Enter for random name.");

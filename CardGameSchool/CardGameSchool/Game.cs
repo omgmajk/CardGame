@@ -79,7 +79,7 @@ namespace CardGameSchool
             Console.WriteLine($"{one.Name}:\n{one.Deck.Peek().Name}({one.Deck.Peek().ShortName})\n\tVS.\n" +
             $"{two.Name}:\n{two.Deck.Peek().Name}({two.Deck.Peek().ShortName})");
 
-            // Put back the two cards at the bottom of winner's deck.
+            // Determine winner and put back the two cards at the bottom of winner's deck.
             if(one.Deck.Peek().Value > two.Deck.Peek().Value)
             {
                 Console.WriteLine("+--------------------------------------------+");
@@ -99,7 +99,7 @@ namespace CardGameSchool
             else
             {
                 Console.WriteLine($"\n\n{one.Deck.Peek().Name}({one.Deck.Peek().ShortName})" +
-                                  $" and {two.Deck.Peek().Name} ({two.Deck.Peek().ShortName}) are equal!");
+                                  $" and {two.Deck.Peek().Name} ({two.Deck.Peek().ShortName}) are equal!\n");
                 Console.WriteLine("Prepare for war...\n\n");
                 War(one, two);
             }
@@ -111,25 +111,26 @@ namespace CardGameSchool
             
             Console.WriteLine("+--------------------------------------------+");
             Console.WriteLine("One, two, three, four... I declare a card war!");
-
+            Console.WriteLine("+--------------------------------------------+");
             // Check if any player has too few cards... Player who has less than 4 cards loses.
-            if(one.Deck.Count < 4)
+            if (one.Deck.Count < 4)
             {
                 Console.WriteLine($"{one.Name} has too few cards!");
+                Putbacks(one.Deck.ToList(), two);
                 one.Deck.Clear();
                 return;
             }
             if(two.Deck.Count < 4)
             {
                 Console.WriteLine($"{two.Name} has too few cards!");
+                Putbacks(two.Deck.ToList(), one);
                 two.Deck.Clear();
                 return;
             }
             // If both players has enough cards. Go go go! War!
-
             Card[] cards = new Card[8];
-            //Console.WriteLine($"{one.Name}\t\tVS.\t\t{two.Name}");
-            Console.WriteLine("+--------------------------------------------+");
+
+            // Dequeue for cards each.
             cards[0] = one.Deck.Dequeue();
             cards[1] = one.Deck.Dequeue();
             cards[2] = one.Deck.Dequeue();
@@ -139,11 +140,12 @@ namespace CardGameSchool
             cards[6] = two.Deck.Dequeue();
             cards[7] = two.Deck.Dequeue();
 
-            // Player's last drawn cards out of four vs eachother.
+            // Player's last drawn cards out of four vs eachother in order.
             for (int i = cards.Length; i > 0 ; i-=2)
             {
                 
-                Console.WriteLine($"{cards[i-5].Name}({cards[i-5].ShortName})\t\tVS.\t\t{cards[i-1].Name}({cards[i-1].ShortName})");
+                Console.WriteLine($"{one.Name}:\n{cards[i-5].Name}({cards[i-5].ShortName})\n\tVS.\n" +
+                                  $"{two.Name}:\n{cards[i-1].Name}({cards[i-1].ShortName})");
                 Thread.Sleep(4000);
                 if (cards[i - 1].Value < cards[i - 5].Value)
                 {
