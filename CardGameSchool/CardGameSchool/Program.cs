@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace CardGameSchool
 {
@@ -33,18 +34,30 @@ namespace CardGameSchool
             if (!String.IsNullOrEmpty(mode))
                 if (mode[0].ToString().ToLower() == "y") Game.Automatic = true;
 
-            // Make the hands.
-            Game.GenerateHands(playerOne, playerTwo);
-
+            
             // Game loop.
+            int turns = 0;
             do
             {
-                while (playerOne.Deck.Count > 0 || playerTwo.Deck.Count > 0)
+                // Make the hands.
+                Game.GenerateHands(playerOne, playerTwo);
+
+                while (playerOne.Deck.Count > 0 && playerTwo.Deck.Count > 0)
                 {
-                    break;
+                    turns++;
+                    Console.Clear();
+                    Game.Battle(playerOne, playerTwo);
+                    Console.WriteLine("Current count: " + playerOne.Deck.Count + " " + playerTwo.Deck.Count);
+                    Console.WriteLine($"Current total: {playerOne.Deck.Count + playerTwo.Deck.Count}");
+                    Console.WriteLine($"Current turn: {turns}");
+                    Thread.Sleep(100);
                 }
+
+                Console.WriteLine(Game.Winner(playerOne, playerTwo));
+
                 Console.WriteLine("Do you want to play again? (y/yes/n/no). Auto(Empty/No).");
                 string playAgain = Console.ReadLine();
+                
                 if (!String.IsNullOrEmpty(playAgain))
                     if (playAgain[0].ToString().ToLower() == "y") continue;
                 
