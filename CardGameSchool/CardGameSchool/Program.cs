@@ -29,23 +29,10 @@ namespace CardGameSchool
 
             if (!String.IsNullOrEmpty(mode))
                 if (mode[0].ToString().ToLower() == "y") Game.Automatic = true;
-            
+
             // Make the hands.
-            var deck = Game.FillDeck();
-            for (int i = deck.Count; i > 0; i--)
-            {
-                if (i % 2 == 0)
-                {
-                    playerOne.Deck.Enqueue(deck[0]);
-                    deck.RemoveAt(0);
-                }
-                else
-                {
-                    playerTwo.Deck.Enqueue(deck[0]);
-                    deck.RemoveAt(0);
-                }
-            }
-            Console.WriteLine(playerOne.Name + " " + playerTwo.Name + " " + Game.Automatic.ToString());
+            Game.GenerateHands(playerOne, playerTwo);
+
         }
     }
 }

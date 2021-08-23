@@ -33,6 +33,25 @@ namespace CardGameSchool
             Random random = new Random();
             return deck.OrderBy(x => random.Next()).ToList();
         }
+
+        public static void GenerateHands(Player one, Player two)
+        {
+            var deck = Game.FillDeck();
+            for (int i = deck.Count; i > 0; i--)
+            {
+                if (i % 2 == 0)
+                {
+                    one.Deck.Enqueue(deck[0]);
+                    deck.RemoveAt(0);
+                }
+                else
+                {
+                    two.Deck.Enqueue(deck[0]);
+                    deck.RemoveAt(0);
+                }
+            }
+        }
+
         
     }
 }
