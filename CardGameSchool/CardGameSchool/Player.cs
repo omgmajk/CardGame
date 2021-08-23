@@ -18,7 +18,7 @@ namespace CardGameSchool
         public Player()
         {
             Random random = new Random();
-            string[] randoms = new string[] { "John", "Mark", "Mike", "Martin", "Jessica", "Anna", "Emma", "Jenny"};
+            string[] randoms = new string[] { "John", "Mark", "Mike", "Martin", "Thomas", "Daniel", "Jessica", "Anna", "Emma", "Jenny", "Sanna", "Alexandra"};
             Name = randoms[random.Next(0, randoms.Length - 1)];
         }
 
