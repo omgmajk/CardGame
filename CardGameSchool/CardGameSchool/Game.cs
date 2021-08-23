@@ -32,6 +32,8 @@ namespace CardGameSchool
                 }
             }
             Random random = new Random();
+
+            // Shuffle the list.
             return deck.OrderBy(x => random.Next()).ToList();
         }
 
@@ -57,6 +59,7 @@ namespace CardGameSchool
         public static string Winner(Player one, Player two) 
                              => one.Deck.Count > two.Deck.Count ? $"{one.Name} wins the game!" : $"{two.Name} wins the game!";
 
+        // Puts cards back on the bottom of winner's hand.
         public static void Putbacks(List<Card> cards, Player player)
         {
             Random random = new Random();
@@ -136,7 +139,7 @@ namespace CardGameSchool
             cards[6] = two.Deck.Dequeue();
             cards[7] = two.Deck.Dequeue();
 
-            // Player's last cards vs eachother.
+            // Player's last drawn cards out of four vs eachother.
             for (int i = cards.Length; i > 0 ; i-=2)
             {
                 

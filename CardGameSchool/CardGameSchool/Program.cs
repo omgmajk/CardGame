@@ -10,6 +10,17 @@ namespace CardGameSchool
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Welcome to...");
+            Console.WriteLine(
+            @"
+           __      __  _____ __________ 
+          /  \    /  \/  _  \\______   \
+          \   \/\/   /  /_\  \|       _/
+           \        /    |    \    |   \
+            \__/\  /\____|__  /____|_  /
+                 \/         \/       \/ 
+            ");
+
             // Start game
             Console.WriteLine("What is the name of player one? Enter for random name.");
             string first = Console.ReadLine();
@@ -86,7 +97,7 @@ namespace CardGameSchool
                         continue;
                     }
                 
-                // Will never run if yes is entered.
+                // Will never break if yes is entered.
                 break;
 
             } while (true);
