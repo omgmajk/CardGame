@@ -56,7 +56,7 @@ namespace CardGameSchool
             }
         }
         // Returns the winner.
-        public static string Winner(Player one, Player two) 
+        public static string Winner(Player one, Player two)
                              => one.Deck.Count > two.Deck.Count ? $"{one.Name} wins the game!" : $"{two.Name} wins the game!";
 
         // Puts cards back on the bottom of winner's hand.
@@ -80,7 +80,7 @@ namespace CardGameSchool
             $"{two.Name}:\n{two.Deck.Peek().Name}({two.Deck.Peek().ShortName})");
 
             // Determine winner and put back the two cards at the bottom of winner's deck.
-            if(one.Deck.Peek().Value > two.Deck.Peek().Value)
+            if (one.Deck.Peek().Value > two.Deck.Peek().Value)
             {
                 Console.WriteLine("+--------------------------------------------+");
                 Console.WriteLine($"{one.Name} wins!");
@@ -88,13 +88,13 @@ namespace CardGameSchool
                 cards[1] = two.Deck.Dequeue();
                 Putbacks(cards.ToList(), one);
             }
-            else if(one.Deck.Peek().Value < two.Deck.Peek().Value)
+            else if (one.Deck.Peek().Value < two.Deck.Peek().Value)
             {
                 Console.WriteLine("+--------------------------------------------+");
                 Console.WriteLine($"{two.Name} wins!");
                 cards[0] = one.Deck.Dequeue();
                 cards[1] = two.Deck.Dequeue();
-                Putbacks(cards.ToList(), two); 
+                Putbacks(cards.ToList(), two);
             }
             else
             {
@@ -108,7 +108,7 @@ namespace CardGameSchool
         // War method, main game.
         public static void War(Player one, Player two)
         {
-            
+
             Console.WriteLine("+--------------------------------------------+");
             Console.WriteLine("One, two, three, four... I declare a card war!");
             Console.WriteLine("+--------------------------------------------+");
@@ -120,7 +120,7 @@ namespace CardGameSchool
                 one.Deck.Clear();
                 return;
             }
-            if(two.Deck.Count < 4)
+            if (two.Deck.Count < 4)
             {
                 Console.WriteLine($"{two.Name} has too few cards!");
                 Putbacks(two.Deck.ToList(), one);
@@ -141,36 +141,50 @@ namespace CardGameSchool
             cards[7] = two.Deck.Dequeue();
 
             // Player's last drawn cards out of four vs eachother in order.
-            for (int i = cards.Length; i > 0 ; i-=2)
+            for (int i = cards.Length; i > 0; i -= 2)
             {
-                
-                Console.WriteLine($"{one.Name}:\n{cards[i-5].Name}({cards[i-5].ShortName})\n\tVS.\n" +
-                                  $"{two.Name}:\n{cards[i-1].Name}({cards[i-1].ShortName})");
-                Thread.Sleep(4000);
-                if (cards[i - 1].Value < cards[i - 5].Value)
+                if (i - 5 > 0 && i - 5 > 0)
                 {
-                    Console.WriteLine($"{one.Name} wins the war!");
-                    Thread.Sleep(500);
-                    Putbacks(cards.ToList(), one);
-                    break;
+                    Console.WriteLine($"{one.Name}:\n{cards[i - 5].Name}({cards[i - 5].ShortName})\n\tVS.\n" +
+                                      $"{two.Name}:\n{cards[i - 1].Name}({cards[i - 1].ShortName})");
+                    Thread.Sleep(4000);
+
+                    if (cards[i - 1].Value < cards[i - 5].Value)
+                    {
+                        Console.WriteLine($"{one.Name} wins the war!");
+                        Thread.Sleep(500);
+                        Putbacks(cards.ToList(), one);
+                        break;
+                    }
+                    else if (cards[i - 1].Value > cards[i - 5].Value)
+                    {
+                        Console.WriteLine($"{two.Name} wins the war!");
+                        Thread.Sleep(500);
+                        Putbacks(cards.ToList(), two);
+                        break;
+                    }
+                    else if (cards[i - 1].Value == cards[i - 5].Value)
+                    {
+                        Console.WriteLine("The war is a draw!");
+                        Thread.Sleep(500);
+                        continue;
+                    }
                 }
-                else if (cards[i - 1].Value > cards[i - 5].Value)
+                // If for some obscure reason the war ends in a total draw and all cards are equal
+                // Put back cards in the bottom and restart the game, no-one wins the cards.
+                else
                 {
-                    Console.WriteLine($"{two.Name} wins the war!");
-                    Thread.Sleep(500);
-                    Putbacks(cards.ToList(), two);
-                    break;
+                    Console.WriteLine("The war is a total draw! Going back to main game.");
+                    Console.WriteLine("Putting back the the cards to each player in random order.");
+                    var oneDeck = cards.ToList().Take(4);
+                    var twoDeck = cards.ToList().Skip(4).Take(4);
+                    Putbacks(oneDeck.ToList(), one);
+                    Putbacks(twoDeck.ToList(), two);
+                    return;
                 }
-                else 
-                {
-                    Console.WriteLine("The war is a draw!");
-                    Thread.Sleep(500);
-                    continue;
-                }
-                     
             }
         }
 
-        
+
     }
 }

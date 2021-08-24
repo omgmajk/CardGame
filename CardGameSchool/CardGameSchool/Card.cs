@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CardGameSchool
+﻿namespace CardGameSchool
 {
     public class Card
     {
@@ -41,19 +39,19 @@ namespace CardGameSchool
             char[] suitShort = new char[] { '♦', '♣', '♠', '♥' };
 
             switch (val)
-                {
-                    case < 11:
-                        return val.ToString() + $"{suitShort[(int)suit]}";
-                    case 11:
-                        return "J" + $"{suitShort[(int)suit]}";
-                    case 12:
-                        return "Q" + $"{suitShort[(int)suit]}";
+            {
+                case < 11:
+                    return val.ToString() + $"{suitShort[(int)suit]}";
+                case 11:
+                    return "J" + $"{suitShort[(int)suit]}";
+                case 12:
+                    return "Q" + $"{suitShort[(int)suit]}";
                 case 13:
-                        return "K" + $"{suitShort[(int)suit]}";
+                    return "K" + $"{suitShort[(int)suit]}";
                 case 14:
-                        return "A" + $"{suitShort[(int)suit]}";
+                    return "A" + $"{suitShort[(int)suit]}";
                 default:
-                        return "Something went wrong...";
+                    return "Something went wrong...";
             }
         }
 

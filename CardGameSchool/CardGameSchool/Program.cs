@@ -31,7 +31,7 @@ namespace CardGameSchool
             string first = Console.ReadLine();
             Console.WriteLine("What is the name of player two? Enter for random name.");
             string second = Console.ReadLine();
-            
+
             // Names set to random until changed.
             Player playerOne = new Player();
             Player playerTwo = new Player();
@@ -55,7 +55,7 @@ namespace CardGameSchool
             Console.WriteLine(gameMode);
             Console.ReadLine();
 
-            if(Game.Automatic == false)
+            if (Game.Automatic == false)
             {
                 Console.Clear();
                 Console.WriteLine("All you can do is press enter, the game has no player logic. Press enter to begin.");
@@ -74,11 +74,11 @@ namespace CardGameSchool
                     turns++;
                     Console.Clear();
                     Game.Battle(playerOne, playerTwo);
-                    Console.WriteLine("\n\n\nCurrent deck count: \n" + 
-                    playerOne.Name + ": " + 
+                    Console.WriteLine("\n\n\nCurrent deck count: \n" +
+                    playerOne.Name + ": " +
                     playerOne.Deck.Count + ", " +
                     playerTwo.Name + ": " +
-                    + playerTwo.Deck.Count);
+                    +playerTwo.Deck.Count);
                     Console.WriteLine($"Current turn: {turns}");
                     if (Game.Automatic == true)
                         Thread.Sleep(100);
@@ -101,7 +101,7 @@ namespace CardGameSchool
                         playerTwo.Deck.Clear();
                         continue;
                     }
-                
+
                 // Will never break if yes is entered.
                 break;
 
