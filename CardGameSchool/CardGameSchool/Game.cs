@@ -143,7 +143,7 @@ namespace CardGameSchool
             // Player's last drawn cards out of four vs eachother in order.
             for (int i = cards.Length; i > 0; i -= 2)
             {
-                if (i - 5 > 0)
+                if (i - 5 < 0)
                 {
                     Console.WriteLine($"{one.Name}:\n{cards[i - 5].Name}({cards[i - 5].ShortName})\n\tVS.\n" +
                                       $"{two.Name}:\n{cards[i - 1].Name}({cards[i - 1].ShortName})");
