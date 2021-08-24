@@ -77,7 +77,6 @@ namespace CardGameSchool
             
             Console.WriteLine("+--------------------------------------------+");
             Console.WriteLine($"{one.Name}:\n{one.Deck.Peek().Name}({one.Deck.Peek().ShortName})\n\tVS.\n" +
-            
             $"{two.Name}:\n{two.Deck.Peek().Name}({two.Deck.Peek().ShortName})");
 
             // Determine winner and put back the two cards at the bottom of winner's deck.
