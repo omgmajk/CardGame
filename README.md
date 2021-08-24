@@ -12,4 +12,7 @@ A simple implementation of the card game War in C# with slight adjustments...
 5. First player to get to zero cards loses, *if* a player has less than four cards when the war is starting, the other player wins by default.
 6. Special case: If by some freak accident all cards in a war are equal, put them back in random order and go back to battle.
 
+Rules changed slightly from normal War due to the game being too deterministic and go could go on forever.
+https://mathoverflow.net/questions/11503/does-war-have-infinite-expected-length
+
 **Enjoy**
