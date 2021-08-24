@@ -168,7 +168,7 @@ namespace CardGameSchool
                         Putbacks(cards.ToList(), two);
                         break;
                     }
-                    else if (oneValue == twoValue)
+                    else if (cards[i - 5].Value == cards[i - 1].Value)
                     {
                         Console.WriteLine("The war is a draw!");
                         Thread.Sleep(500);
