@@ -140,30 +140,32 @@ namespace CardGameSchool
             cards[6] = two.Deck.Dequeue();
             cards[7] = two.Deck.Dequeue();
 
-            // Player's last drawn cards out of four vs eachother in backwards order, including the cards drawn in the battle-round being last.
-            for (int i = cards.Length; i > 0; i -= 2)
+            // Player's last drawn cards out of four (three) vs eachother in backwards order, minus the cards drawn in the last battle.
+            for (int i = cards.Length; i > 0; i--)
             {
+                int oneValue = cards[i - 5].Value;
+                int twoValue = cards[i - 1].Value;
                 if (i - 5 > 0)
                 {
                     Console.WriteLine($"{one.Name}:\n{cards[i - 5].Name}({cards[i - 5].ShortName})\n\tVS.\n" +
                                       $"{two.Name}:\n{cards[i - 1].Name}({cards[i - 1].ShortName})");
                     Thread.Sleep(4000);
 
-                    if (cards[i - 1].Value < cards[i - 5].Value)
+                    if (oneValue > twoValue)
                     {
                         Console.WriteLine($"{one.Name} wins the war!");
                         Thread.Sleep(500);
                         Putbacks(cards.ToList(), one);
                         break;
                     }
-                    else if (cards[i - 1].Value > cards[i - 5].Value)
+                    else if (oneValue < twoValue)
                     {
                         Console.WriteLine($"{two.Name} wins the war!");
                         Thread.Sleep(500);
                         Putbacks(cards.ToList(), two);
                         break;
                     }
-                    else if (cards[i - 1].Value == cards[i - 5].Value)
+                    else if (oneValue == twoValue)
                     {
                         Console.WriteLine("The war is a draw!");
                         Thread.Sleep(500);
