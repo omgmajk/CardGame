@@ -44,6 +44,7 @@ namespace TestCardGameSchool
             Assert.AreEqual(2, two.Deck.Count);
             Assert.AreEqual(0, one.Deck.Count);
         }
+        // Test if cards are put back if war is a total draw.
         [TestMethod]
         public void TestWar()
         {
