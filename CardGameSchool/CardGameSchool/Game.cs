@@ -113,6 +113,7 @@ namespace CardGameSchool
             Console.WriteLine("+--------------------------------------------+");
             Console.WriteLine("One, two, three, four... I declare a card war!");
             Console.WriteLine("+--------------------------------------------+");
+
             // Check if any player has too few cards... Player who has less than 4 cards loses.
             if (one.Deck.Count < 4)
             {
@@ -128,6 +129,7 @@ namespace CardGameSchool
                 two.Deck.Clear();
                 return;
             }
+
             // If both players has enough cards. Go go go! War!
             Card[] cards = new Card[8];
 
@@ -157,21 +159,21 @@ namespace CardGameSchool
                     if (cards[i - 5].Value > cards[i - 1].Value)
                     {
                         Console.WriteLine($"{one.Name} wins the war!");
-                        Thread.Sleep(500);
+                        Thread.Sleep(1000);
                         Putbacks(cards.ToList(), one);
                         break;
                     }
                     else if (cards[i - 5].Value < cards[i - 1].Value)
                     {
                         Console.WriteLine($"{two.Name} wins the war!");
-                        Thread.Sleep(500);
+                        Thread.Sleep(1000);
                         Putbacks(cards.ToList(), two);
                         break;
                     }
                     else if (cards[i - 5].Value == cards[i - 1].Value)
                     {
                         Console.WriteLine("The war is a draw!");
-                        Thread.Sleep(500);
+                        Thread.Sleep(1000);
                         continue;
                     }
                 }
@@ -180,7 +182,7 @@ namespace CardGameSchool
                 else
                 {
                     Console.WriteLine("The war is a total draw! Going back to main game.");
-                    Console.WriteLine("Putting back the cards to each player in random order.");
+                    Console.WriteLine("Giving back the cards to each player in random order.");
                     var oneDeck = cards.ToList().Take(4);
                     var twoDeck = cards.ToList().Skip(4).Take(4);
                     Putbacks(oneDeck.ToList(), one);
