@@ -45,7 +45,7 @@ namespace TestCardGameSchool
             Assert.AreEqual(0, one.Deck.Count);
         }
         [TestMethod]
-        public void TestBattle()
+        public void TestWar()
         {
             Player one = new Player();
             Player two = new Player();
