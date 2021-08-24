@@ -74,9 +74,10 @@ namespace CardGameSchool
         public static void Battle(Player one, Player two)
         {
             Card[] cards = new Card[2];
-            //Console.WriteLine($"{one.Name}\t\t\tVS.\t\t{two.Name}");
+            
             Console.WriteLine("+--------------------------------------------+");
             Console.WriteLine($"{one.Name}:\n{one.Deck.Peek().Name}({one.Deck.Peek().ShortName})\n\tVS.\n" +
+            
             $"{two.Name}:\n{two.Deck.Peek().Name}({two.Deck.Peek().ShortName})");
 
             // Determine winner and put back the two cards at the bottom of winner's deck.
@@ -143,22 +144,24 @@ namespace CardGameSchool
             // Player's last drawn cards out of four (three) vs eachother in backwards order, minus the cards drawn in the last battle.
             for (int i = cards.Length; i > 0; i--)
             {
-                int oneValue = cards[i - 5].Value;
-                int twoValue = cards[i - 1].Value;
+                // These are commented out for now, might need for weird compiler errors.
+                //int oneValue = cards[i - 5].Value;
+                //int twoValue = cards[i - 1].Value;
+                
                 if (i - 5 > 0)
                 {
                     Console.WriteLine($"{one.Name}:\n{cards[i - 5].Name}({cards[i - 5].ShortName})\n\tVS.\n" +
                                       $"{two.Name}:\n{cards[i - 1].Name}({cards[i - 1].ShortName})");
                     Thread.Sleep(4000);
 
-                    if (oneValue > twoValue)
+                    if (cards[i - 5].Value > cards[i - 1].Value)
                     {
                         Console.WriteLine($"{one.Name} wins the war!");
                         Thread.Sleep(500);
                         Putbacks(cards.ToList(), one);
                         break;
                     }
-                    else if (oneValue < twoValue)
+                    else if (cards[i - 5].Value < cards[i - 1].Value)
                     {
                         Console.WriteLine($"{two.Name} wins the war!");
                         Thread.Sleep(500);
