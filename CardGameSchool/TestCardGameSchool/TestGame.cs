@@ -106,6 +106,7 @@ namespace TestCardGameSchool
                 Name = Card.GetLongName(11, Suit.Hearts),
                 ShortName = Card.GetShortName(11, Suit.Hearts)
             });
+            // Four same cards should be put back in each deck, randomly.
             Game.War(one, two);
             Assert.AreEqual(4, one.Deck.Count);
             Assert.AreEqual(4, two.Deck.Count);
