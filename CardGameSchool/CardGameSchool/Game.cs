@@ -140,7 +140,7 @@ namespace CardGameSchool
             cards[6] = two.Deck.Dequeue();
             cards[7] = two.Deck.Dequeue();
 
-            // Player's last drawn cards out of four vs eachother in order.
+            // Player's last drawn cards out of four vs eachother in backwards order, including the cards drawn in the battle-round being last.
             for (int i = cards.Length; i > 0; i -= 2)
             {
                 if (i - 5 > 0)
@@ -180,7 +180,7 @@ namespace CardGameSchool
                     var twoDeck = cards.ToList().Skip(4).Take(4);
                     Putbacks(oneDeck.ToList(), one);
                     Putbacks(twoDeck.ToList(), two);
-                    Thread.Sleep(500);
+                    Thread.Sleep(1500);
                     break;
                 }
             }
