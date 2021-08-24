@@ -99,6 +99,7 @@ namespace CardGameSchool
             }
             else
             {
+                Console.WriteLine("+--------------------------------------------+");
                 Console.WriteLine($"\n\n{one.Deck.Peek().Name}({one.Deck.Peek().ShortName})" +
                                   $" and {two.Deck.Peek().Name} ({two.Deck.Peek().ShortName}) are equal!\n");
                 Console.WriteLine("Prepare for war...\n\n");

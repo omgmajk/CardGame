@@ -11,6 +11,7 @@ namespace CardGameSchool
         static void Main(string[] args)
         {
             // Game main screen and display rules.
+            Console.Title = "War Game";
             Console.WriteLine("Welcome to...");
             Console.WriteLine(
             @"
