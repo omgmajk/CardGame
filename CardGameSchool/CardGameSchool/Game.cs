@@ -175,7 +175,7 @@ namespace CardGameSchool
                 else
                 {
                     Console.WriteLine("The war is a total draw! Going back to main game.");
-                    Console.WriteLine("Putting back the the cards to each player in random order.");
+                    Console.WriteLine("Putting back the cards to each player in random order.");
                     var oneDeck = cards.ToList().Take(4);
                     var twoDeck = cards.ToList().Skip(4).Take(4);
                     Putbacks(oneDeck.ToList(), one);
