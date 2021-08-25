@@ -64,9 +64,11 @@ namespace CardGameSchool
             }
 
             // Game loop.
-            int turns = 0;
+            
             do
             {
+                int turns = 0;
+
                 // Make the hands.
                 Game.GenerateHands(playerOne, playerTwo);
 
@@ -90,7 +92,7 @@ namespace CardGameSchool
                     }
                 }
 
-                Console.WriteLine(Game.Winner(playerOne, playerTwo));
+                Console.WriteLine("\n" + Game.Winner(playerOne, playerTwo) + "\n");
 
                 Console.WriteLine("Do you want to play again? (y/yes/n/no). Auto(Empty/No).");
                 string playAgain = Console.ReadLine();
