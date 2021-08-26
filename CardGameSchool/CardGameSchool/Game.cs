@@ -146,10 +146,7 @@ namespace CardGameSchool
             // Player's last drawn cards out of four (three) vs eachother in backwards order, minus the cards drawn in the last battle.
             for (int i = cards.Length; i > 0; i--)
             {
-                // These are commented out for now, might need for weird compiler errors.
-                //int oneValue = cards[i - 5].Value;
-                //int twoValue = cards[i - 1].Value;
-                
+                // Check to see that the loop does not go out of bounds.
                 if (i - 5 > 0)
                 {
                     Console.WriteLine($"{one.Name}:\n{cards[i - 5].Name}({cards[i - 5].ShortName})\n\tVS.\n" +
