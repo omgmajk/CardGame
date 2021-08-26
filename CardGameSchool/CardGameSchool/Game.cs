@@ -28,7 +28,6 @@ namespace CardGameSchool
                         Name = Card.GetLongName(i, suit),
                         ShortName = Card.GetShortName(i, suit)
                     });
-
                 }
             }
             Random random = new Random();

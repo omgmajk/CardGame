@@ -52,7 +52,7 @@ namespace CardGameSchool
                 if (mode[0].ToString().ToLower() == "y") Game.Automatic = false;
 
             // Second warning...
-            var gameMode = Game.Automatic ? "Good! The game will sleep for 0.1s each turn." : "I warned you!" + " Press enter to begin.";
+            var gameMode = Game.Automatic ? "Good! The game will sleep for 0.1s each turn." + " Press enter to begin." : "I warned you!" + " Press enter to begin.";
             Console.WriteLine(gameMode);
             Console.ReadLine();
 
@@ -64,9 +64,11 @@ namespace CardGameSchool
             }
 
             // Game loop.
-            int turns = 0;
+            
             do
             {
+                int turns = 0;
+
                 // Make the hands.
                 Game.GenerateHands(playerOne, playerTwo);
 
@@ -90,7 +92,7 @@ namespace CardGameSchool
                     }
                 }
 
-                Console.WriteLine(Game.Winner(playerOne, playerTwo));
+                Console.WriteLine("\n" + Game.Winner(playerOne, playerTwo) + "\n");
 
                 Console.WriteLine("Do you want to play again? (y/yes/n/no). Auto(Empty/No).");
                 string playAgain = Console.ReadLine();
